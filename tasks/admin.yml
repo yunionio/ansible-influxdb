@@ -1,0 +1,5 @@
+---
+
+- name: admin | Create Influx Admin users
+  command: "{{ influxdb_influx_bin }} -execute \"CREATE USER {{ influxdb_admin_username }} WITH PASSWORD '{{ influxdb_admin_password }}' WITH ALL PRIVILEGES\""
+  changed_when: false

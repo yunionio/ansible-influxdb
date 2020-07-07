@@ -8,8 +8,14 @@
 - include_tasks: redhat.yml
   when: ansible_os_family == "RedHat"
 
+- include_tasks: config_db.yml
+  when: influxdb_config_databases|bool
+
+- include_tasks: users.yml
+  when: influxdb_config_databases|bool
+
 - include_tasks: config.yml
   when: influxdb_config|bool
 
-- include_tasks: config_db.yml
-  when: influxdb_config_databases|bool
+- include_tasks: admin.yml
+  when: influxdb_create_admin|bool
